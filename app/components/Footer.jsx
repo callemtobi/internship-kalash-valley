@@ -50,7 +50,7 @@ export default function Footer() {
             src="/logo/logo.png"
             height={100}
             width={100}
-            className="card-img-top object-fit-contain"
+            // className="card-img-top object-fit-contain"
             alt="..."
           ></Image>
           <p className="text-light mt-4">
@@ -80,7 +80,7 @@ export default function Footer() {
         </div>
 
         {/* Contacts us */}
-        <div className="d-flex bg-dark text-center  justify-content-center align-items-center pt-5 col-12 col-lg-4">
+        <div className="d-flex bg-dark text-center justify-content-center align-items-center pt-5 col-12 col-lg-4">
           <div className="text-light">
             <h1 className="fs-2 d-inline-block w-auto border-bottom p-2">
               Contact Us

@@ -2,6 +2,7 @@
 
 import NavBar from "@components/Nav";
 import GalleryMain from "@components/GalleryMain";
+import FeaturedGallery from "@components/FeaturedGallerySection";
 import Footer from "@components/Footer";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <>
       <NavBar />
       <GalleryMain />
+      <FeaturedGallery />
       <Footer />
     </>
   );

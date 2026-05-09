@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeLink, setActiveLink] = useState("Gallery");
 
   const navLinks = [
     "Home",
@@ -91,8 +91,9 @@ export default function Navbar() {
           <ul className="navbar-nav mx-auto gap-1">
             {navLinks.map((link) => (
               <li className="nav-item" key={link}>
-                <Link href={`/${link}`.toLowerCase().replace(" ", "")}>
+                <Link href={`/${link}`.toLowerCase().replace(/\s+/g, "")}>
                   <button
+                    onClick={() => setActiveLink(link)}
                     className="btn"
                     style={{
                       color:
@@ -107,22 +108,6 @@ export default function Navbar() {
                     {" "}
                     {link}
                   </button>
-                  {/* <a
-                  className="nav-link px-3 py-2"
-                  // href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                  onClick={() => setActiveLink(link)}
-                  style={{
-                    color:
-                      activeLink === link ? "#fff" : "rgba(255,255,255,0.8)",
-                    backgroundColor:
-                      activeLink === link ? "#7B4A1E" : "transparent",
-                    borderRadius: 6,
-                    transition: "all 0.2s",
-                    fontWeight: activeLink === link ? 500 : 400,
-                  }}
-                > */}
-
-                  {/* </a> */}
                 </Link>
               </li>
             ))}
