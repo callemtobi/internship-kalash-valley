@@ -4,6 +4,7 @@ import { Leaf } from "lucide-react";
 import IntroButton from "./IntroButton";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Form() {
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,8 @@ export default function Form() {
     tourGuidePrice: "",
     totalAmount: "",
   });
+
+  const notify = () => toast("Booking registered");
 
   const handleChange = async (e) => {
     setFormData({
@@ -98,14 +101,39 @@ export default function Form() {
     console.log("Form Submitted");
 
     try {
+      setLoading(true);
+      setError("");
       const response = await axios.post(
-        "http://localhost:8000/booking",
+        "http://localhost:8000/api/bookings/register",
         finalData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // "Authorization": `Bearer ${getAuthToken()}`,
+          },
+          timeout: 1000,
+        },
       );
-      console.log("Response:", response.data);
+      console.log("Booking Response:", response.data);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        checkInDate: "",
+        checkOutDate: "",
+        noRooms: "",
+        adults: "",
+        tourGuide: "",
+        noDays: "",
+        priceDays: "",
+        tourGuidePrice: "",
+        totalAmount: "",
+      });
       // Handle success (e.g., show a success message, redirect, etc.)
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.log(error.response.data);
+      console.log(error.response.status);
+      // console.error("Error submitting form:", error);
       setError("An error occurred while submitting the form.");
     } finally {
       setLoading(false);
@@ -410,11 +438,13 @@ export default function Form() {
           <button
             type="submit"
             disabled={loading}
+            onClick={notify}
             className="btn text-light rounded-pill w-50"
             style={{ backgroundColor: "#7B4A1E" }}
           >
             Next
           </button>
+          <Toaster />
         </div>
       </form>
       {error && (
