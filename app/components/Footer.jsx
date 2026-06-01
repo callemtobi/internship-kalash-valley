@@ -104,7 +104,7 @@ export default function Footer() {
               src="/logo/vector.png"
               style={
                 isMobile
-                  ? { postition: "absolute", bottom: "0rem", right: "-3rem" }
+                  ? { position: "absolute", bottom: "0rem", right: "-3rem" }
                   : { position: "absolute", bottom: "-7rem", right: "0rem" }
               }
               // style={{ position: "absolute", bottom: "0rem", right: "-3rem" }}

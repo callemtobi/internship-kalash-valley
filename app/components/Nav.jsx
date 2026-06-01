@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Gallery");
+  const [activeLink, setActiveLink] = useState("");
 
   const navLinks = [
     "Home",
